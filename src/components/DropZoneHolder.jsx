@@ -3,6 +3,7 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import ImagePreview from './ImagePreview';
+import uuid from 'node-uuid';
 
 export default class DropZoneHolder extends React.Component {
 	constructor() {
@@ -19,8 +20,8 @@ export default class DropZoneHolder extends React.Component {
 			<div>
 				<Dropzone onDrop={ (files) => this.onDrop(files)} size={'100%'}>
 					<div> Testing testing </div>
-					{theFiles.map((file, i) =>
-						<ImagePreview onRemove={() => this.onRemoveFile(i)} file={file} key={i} />
+					{theFiles.map((fileObj) =>
+						<ImagePreview id={fileObj.id} onRemove={this.onRemoveFile.bind(this)} file={fileObj.file} key={'file-' + fileObj.id} />
 					)}
 				</Dropzone>
 			</div>
@@ -30,16 +31,18 @@ export default class DropZoneHolder extends React.Component {
 	onDrop(files) {
 		this.setState({
 			files: this.state.files.concat(files.map(file => {
-				return file;
+				return {
+					id: uuid.v4(),
+					file: file,
+				};
 			}))
 		});
 	}
-	onRemoveFile(index){
+	onRemoveFile(id){
 		this.setState({
-			files: this.state.files.filter((value, i) => {
-				return i !==k
+			files: this.state.files.filter((fileObj) => {
+				return fileObj.id !== id;
 			})
 		});
-		console.log('remove file at ', index);
 	}
 }

@@ -19,6 +19,7 @@
   },
   "main": "dist-modules/index.js",
   "dependencies": {
+    "node-uuid": "^1.4.3",
     "react-dropzone": "^1.2.2"
   },
   "devDependencies": {

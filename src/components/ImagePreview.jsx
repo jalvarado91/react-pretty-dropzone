@@ -56,7 +56,7 @@ export default class ImagePreview extends React.Component {
 	}
 	onClickRemove(e) {
 		e.stopPropagation();
-		this.props.onRemove(this.props.i);
+		this.props.onRemove(this.props.id);
 	}
 
 	resizeImage(canvas, img) {
