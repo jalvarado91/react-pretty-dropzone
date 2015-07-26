@@ -1,8 +1,8 @@
 {
-  "name": "react-component-boilerplate",
-  "description": "Boilerplate for React.js components",
-  "author": "Juho Vepsalainen",
-  "user": "survivejs",
+  "name": "react-pretty-dropzone",
+  "description": "Sugar for react-dropzone",
+  "author": "Juan Alvarado",
+  "user": "jalvarado91",
   "version": "0.6.0",
   "scripts": {
     "start": "TARGET=dev node lib/dev_server.js",
@@ -12,7 +12,6 @@
     "dist": "TARGET=dist webpack --colors && TARGET=dist-min webpack --colors",
     "dist-modules": "babel ./src --out-dir ./dist-modules",
     "lint": "eslint . --ext .js --ext .jsx",
-    "check-style": "jscs .",
     "replace-meta": "node lib/replace_meta.js",
     "preversion": "npm run test && npm run dist && npm run dist-modules && git commit -am \"Update dist\"",
     "postpublish": "npm run gh-pages && npm run deploy-gh-pages"
@@ -62,19 +61,6 @@
   "peerDependencies": {
     "react": ">=0.11.2 <1.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/survivejs/react-component-boilerplate.git"
-  },
-  "homepage": "https://survivejs.github.io/react-component-boilerplate/",
-  "bugs": {
-    "url": "https://github.com/survivejs/react-component-boilerplate/issues"
-  },
-  "keywords": [
-    "react",
-    "reactjs",
-    "boilerplate"
-  ],
   "license": "MIT",
   "jest": {
     "scriptPreprocessor": "./lib/preprocessor.js",
