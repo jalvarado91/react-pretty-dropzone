@@ -20,7 +20,7 @@ export default class DropZoneHolder extends React.Component {
 				<Dropzone onDrop={ (files) => this.onDrop(files)} size={'100%'}>
 					<div> Testing testing </div>
 					{theFiles.map((file, i) =>
-						<ImagePreview file={file} key={i} />
+						<ImagePreview onRemove={() => this.onRemoveFile(i)} file={file} key={i} />
 					)}
 				</Dropzone>
 			</div>
@@ -33,5 +33,13 @@ export default class DropZoneHolder extends React.Component {
 				return file;
 			}))
 		});
+	}
+	onRemoveFile(index){
+		this.setState({
+			files: this.state.files.filter((value, i) => {
+				return i !==k
+			})
+		});
+		console.log('remove file at ', index);
 	}
 }
